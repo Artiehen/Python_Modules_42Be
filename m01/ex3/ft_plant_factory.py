@@ -13,25 +13,25 @@ plants_created = [("Rose", 50, 20),
                   ("Aguacate", 480, 1024), 
                   ("Pitaya", 220, 275)]
 
-plants = []
+def main():
+    plants_created = [("Rose", 50, 20), 
+                  ("Mango", 480, 1024), 
+                  ("Banana", 220, 275), 
+                  ("Aguacate", 480, 1024), 
+                  ("Pitaya", 220, 275)]
 
-index = 0
-while index < len(plants_created):
-    name, height, age = plants_created[index]
-    plants.append(Plant(name, height, age))
-    index += 1
+    plants = []
+    index = 0
+    while index < len(plants_created):
+        name, height, age = plants_created[index]
+        plants.append(Plant(name, height, age))
+        index += 1
+        
+    print("=== Plant Factory Output ===")
+    index = 0
+    while index < len(plants_created):
+        plants[index].ft_print_garden()
+        index += 1
 
-print("=== Plant Factory Output ===")
-
-index = 0
-while index < len(plants_created):
-    plants[index].ft_print_garden()
-    index += 1
-
-# count = 0
-
-# while plants_created:
-#     plants_created[count]
-#     count += 1
-
-# print(count)
+if __name__ == "__main__":
+    main()
