@@ -22,6 +22,7 @@ class Vegetable(Plant):
         self.harvest = harvest
         self.nutrival = nutrival
 
+
 def main():
     print("\n=== Garden Plant Type ===\n")
 
