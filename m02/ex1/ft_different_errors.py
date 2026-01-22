@@ -1,5 +1,5 @@
 def garden_operations():
-    """ This function will test 4 error handling operations """
+    """ This function will test 4 error handling operations individually"""
     try:
         print("\nTesting ValueError...")
         int("abc")
@@ -29,6 +29,7 @@ def garden_operations():
 
 
 def test_error_types():
+    """This function will test 2 error at the same time"""
     print("=== Garden Error Types Demo ===")
     garden_operations()
     print("Testing multiple errors together...")
@@ -38,8 +39,8 @@ def test_error_types():
         10 / 0
 
     except (ValueError, ZeroDivisionError):
-        print("Caught an error, but program continues!\n")
+        print("Caught multiple error, but program continues!\n")
         print("All error types tested successfully!")
 
 
-test_error_types()
+# test_error_types()

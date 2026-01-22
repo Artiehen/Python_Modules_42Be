@@ -14,10 +14,10 @@ def water_plants(plant_list):
 
     finally:
         if error_occurred:
-            print("Closing watering system (cleanup)")
+            print("Closing watering system (cleanup)\n")
             print("Cleanup always happens, even with errors\n")
         else:
-            print("Closing watering system (cleanup)\n")
+            print("Closing watering system (cleanup)")
             print("Watering completed successfully!\n")
 
 
@@ -34,4 +34,4 @@ def test_watering_system():
     water_plants(bad_plants)
 
 
-test_watering_system()
+# test_watering_system()
