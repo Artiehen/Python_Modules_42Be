@@ -4,7 +4,7 @@ def check_temperature(temp_str):
     is within range or not
     """
     try:
-        temp = float(temp_str)
+        temp = int(temp_str)
         if temp > 0 and temp < 40:
             print(f"Temperature {temp}°C is perfect for plants!")
 
