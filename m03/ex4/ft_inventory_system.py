@@ -88,42 +88,50 @@ def inventory_analytics(inventoria, categories):
 
 
 def main():
-    categories = dict()
-    categories.update({
-        "Scarce": dict(),
-        "Moderate": dict(),
-        })
+    try:
+        if len(sys.argv) == 1:
+            raise InventoryError("Please Input inventory")
+        else:
+            categories = dict()
+            categories.update({
+                "Scarce": dict(),
+                "Moderate": dict(),
+                })
 
-    inventoria = dict()
-    args = sys.argv
-    index = 1
+            inventoria = dict()
+            args = sys.argv
+            index = 1
 
-    while index < len(args):
-        pair = args[index].split(":")
-        item = pair[0]
-        quantity = int(pair[1])
+            while index < len(args):
+                pair = args[index].split(":")
+                item = pair[0]
+                quantity = int(pair[1])
 
-        # Add quantity if item already exists
-        quantity = inventoria.get(item, 0) + quantity
+                # Add quantity if item already exists
+                quantity = inventoria.get(item, 0) + quantity
 
-        # Insert item in sorted order (most to least)
-        new_inventory = dict()
-        inserted = False
+                # Insert item in sorted order (most to least)
+                new_inventory = dict()
+                inserted = False
 
-        for existing_item, existing_quantity in inventoria.items():
-            if inserted is False and quantity > existing_quantity:
-                new_inventory.update({item: quantity})
-                inserted = True
+                for existing_item, existing_quantity in inventoria.items():
+                    if inserted is False and quantity > existing_quantity:
+                        new_inventory.update({item: quantity})
+                        inserted = True
 
-            new_inventory.update({existing_item: existing_quantity})
+                    new_inventory.update({existing_item: existing_quantity})
 
-        if inserted is False:
-            new_inventory.update({item: quantity})
+                if inserted is False:
+                    new_inventory.update({item: quantity})
 
-        inventoria = new_inventory
-        index = index + 1
+                inventoria = new_inventory
+                index = index + 1
 
-    inventory_analytics(inventoria, categories)
+            inventory_analytics(inventoria, categories)
+    except (ValueError):
+        print("Missing Values, please check input")
+    except InventoryError as e:
+        print(e)
 
 
 if __name__ == "__main__":
