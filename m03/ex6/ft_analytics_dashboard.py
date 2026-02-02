@@ -3,64 +3,86 @@
 # -------------------------------
 
 players = [
-    {"name": "Alex", "score": 1200, "level": "pro", "achievement": "Sharpshooter"},
-    {"name": "Blake", "score": 800, "level": "casual", "achievement": "First Blood"},
-    {"name": "Casey", "score": 1500, "level": "pro", "achievement": "Unstoppable"},
-    {"name": "Dana", "score": 400, "level": "casual", "achievement": "First Blood"},
-    {"name": "Evan", "score": 950, "level": "casual", "achievement": "Survivor"},
+    {"name": "alice", "score": 2300, "active": "yes",
+     "achievement": ['first_kill', 'level_10', 'treasure_hunter', 'speed_demon'],
+     "score category": 3, "region": "north"},
+    {"name": "bob", "score": 1800, "active": "yes",
+     "achievement": ['first_kill', 'level_10', 'boss_slayer', 'collector'],
+     "score category": 2, "region": "south"},
+    {"name": "charlie", "score": 2150, "active": "yes",
+     "achievement": ['level_10', 'treasure_hunter', 'boss_slayer',
+                     'speed_demon', 'perfectionist'],
+                     "score category": 5, "region": "east"},
+    {"name": "diana", "score": 2050, "active": "no",
+     "achievement": ['level_10', 'treasure_hunter', 'collector', 'speed_demon'],
+     "score category": 1, "region": "west"}
 ]
 
 # -------------------------------
 # List Comprehensions
 # -------------------------------
-
+print("=== Game Analytics Dashboard ===\n")
+print("=== List comprehension examples ===")
 # 1. Filter players with high scores
-high_scores = [p["name"] for p in players if p["score"] >= 1000]
-print("High scoring players:", high_scores)
+high_scores = [p["name"] for p in players if p["score"] >= 2000]
+print("High scorers (>2000):", high_scores)
 
 # 2. Transform scores by adding bonus points
-bonus_scores = [p["score"] + 100 for p in players]
-print("Bonus scores:", bonus_scores)
+bonus_scores = [p["score"] * 2 for p in players]
+print("Scores doubled:", bonus_scores)
 
-# 3. Create formatted player summaries
-summaries = [p["name"] + " scored " + str(p["score"]) for p in players]
-print("Player summaries:", summaries)
+# 3. Create new list for active players
 
-# -------------------------------
-# Dict Comprehensions
-# -------------------------------
+active_players = [p["name"] for p in players if p["active"] == "yes"]
+print("Active players:", active_players)
+
+# # 3. Create formatted player summaries
+# summaries = [p["name"] + " scored " + str(p["score"]) for p in players]
+# print("Player summaries:", summaries)
+
+# # -------------------------------
+# # Dict Comprehensions
+# # -------------------------------
+
+print("\n=== Dictionary comprehension examples ===")
 
 # 4. Map player names to scores
-name_to_score = {p["name"]: p["score"] for p in players}
-print("Name to score mapping:", name_to_score)
+player_dict = {p["name"]: p["score"] for p in players}
+print("Name to score mapping:", player_dict)
 
 # 5. Count players by level
 level_counts = {
-    level: len([p for p in players if p["level"] == level])
-    for level in {p["level"] for p in players}
+    active: len([p for p in players if p["active"] == active])
+    for active in {p["active"] for p in players}
 }
 print("Player count by level:", level_counts)
 
 # 6. Map high-scoring players to their achievements
-elite_achievements = {
-    p["name"]: p["achievement"]
-    for p in players
-    if p["score"] >= 1000
+count_achievements = {
+    p["name"]: len(p["achievement"])
+    for p in players if p["active"] == "yes"
 }
-print("Elite player achievements:", elite_achievements)
+print("Elite player achievements:", count_achievements)
 
 # -------------------------------
 # Set Comprehensions
 # -------------------------------
 
+print("\n=== Set Comprehension Examples ===")
+
 # 7. Find unique player levels
-unique_levels = {p["level"] for p in players}
-print("Unique levels:", unique_levels)
+player_name = {p["name"] for p in players}
+print("Unique players:", player_name)
 
-# 8. Find unique achievements
-unique_achievements = {p["achievement"] for p in players}
-print("Unique achievements:", unique_achievements)
+# # 8. Find unique achievements
+unique_achievements = {achievement for p in players for achievement in p["achievement"] if p["active"] == "yes"}
 
-# 9. Find unique players with scores above 900
-top_players = {p["name"] for p in players if p["score"] > 900}
-print("Top players:", top_players)
+print(f"Unique achievements {unique_achievements}")
+
+active_regions = {p["region"] for p in players if p["active"] == "yes"}
+print(f"Active regions: {active_regions}")
+
+
+# # 9. Find unique players with scores above 900
+# top_players = {p["name"] for p in players if p["score"] > 900}
+# print("Top players:", top_players)
