@@ -2,10 +2,13 @@ import math
 
 
 class GeneralError(Exception):
+    """This class serves as custom error"""
     pass
 
 
-def distance_calculator(pos0, pos1):
+def distance_calculator(pos0: list[int, int, int],
+                        pos1: list[int, int, int]) -> list[int, int, int]:
+    """This function calculates the distance between two points"""
     x0, y0, z0 = pos0
     x1, y1, z1 = pos1
     dist = math.sqrt((x1 - x0) ** 2 +
@@ -14,7 +17,9 @@ def distance_calculator(pos0, pos1):
     return dist
 
 
-def coordinate_system():
+def coordinate_system() -> None:
+    """This function touples the coordinates and
+    process the distance between point a and b"""
     try:
         xyz0 = "0, 0, 0"
         xyz1 = "3,4,0"
@@ -55,7 +60,7 @@ def coordinate_system():
         print(f"Coordinates: X={x01}, Y={y01}, Z={z01}")
 
 
-def main():
+def main() -> None:
     print("=== Game Coordinate System ===\n")
     try:
         coordinate_system()

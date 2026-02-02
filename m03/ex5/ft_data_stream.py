@@ -1,11 +1,16 @@
-def fibonacci():
+from typing import Generator
+
+
+def fibonacci() -> Generator[int]:
+    """This function calculates fibonacci sequence"""
     a, b = 0, 1
     while True:
         yield a
         a, b = b, a + b
 
 
-def is_prime(n):
+def is_prime(n: int) -> bool:
+    """This function checks if is prime numbers"""
     if n < 2:
         return False
     for i in range(2, int(n ** 0.5) + 1):
@@ -14,7 +19,8 @@ def is_prime(n):
     return True
 
 
-def prime():
+def prime() -> Generator[int]:
+    """This function calculates prime numbers"""
     num = 2
     while True:
         if is_prime(num):
@@ -22,7 +28,8 @@ def prime():
         num += 1
 
 
-def generator_demonstration():
+def generator_demonstration() -> None:
+    """This function print the prime numbers and fibonacci sequence"""
     fib_iter = iter(fibonacci())
     print("Fibonacci sequence (first 10):", end=" ")
     first = True
@@ -46,12 +53,14 @@ def generator_demonstration():
     print()
 
 
-def event_stream(n):
+def event_stream(n: int) -> Generator[int]:
+    """This function generates the event stream"""
     for i in range(1, n + 1):
         yield i
 
 
-def filter_important_event(stream):
+def filter_important_event(stream: int) -> Generator[int]:
+    """This function filters important events"""
     list_events = ["Killed monster", "found treasure", "leveled up!"]
     important_events = iter(list_events)
     for event in stream:
@@ -63,7 +72,8 @@ def filter_important_event(stream):
                 yield next(important_events)
 
 
-def main():
+def main() -> None:
+    """This is the main funtion that calculates events data"""
     print("===  Game Data Stream Processor  ===\n")
     print(" Processing 1000 game events ...\n")
     players = ["Alice (level 5)", "Bob (level 12)", "Charlie (level 8)"]

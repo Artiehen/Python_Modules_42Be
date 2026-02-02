@@ -1,7 +1,8 @@
 import sys
 
 
-def main():
+def main() -> None:
+    """This function takes input and prints arguments and program names"""
     print("=== Command Quest ===")
     no_arg = False
     try:

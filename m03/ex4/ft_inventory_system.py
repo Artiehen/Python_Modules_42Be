@@ -2,12 +2,13 @@ import sys
 
 
 class InventoryError(Exception):
+    """This class serves for custom error messages"""
     pass
 
 
-def inventory_analytics(inventoria, categories):
+def inventory_analytics(inventoria: dict, categories: dict) -> None:
+    """This function processes the inventory items and amounts"""
 
-    # Find most and least abundant items
     most_item = None
     least_item = None
 
@@ -18,7 +19,6 @@ def inventory_analytics(inventoria, categories):
         if least_item is None or quantity < inventoria.get(least_item):
             least_item = item
 
-    # Calculate total quantities
     total_items = 0
     t_items = 0
     for quantity in inventoria.values():
@@ -87,7 +87,9 @@ def inventory_analytics(inventoria, categories):
         print("Sample lookup - 'sword' in inventory: True")
 
 
-def main():
+def main() -> None:
+    """This function takes input, check for error and
+    passes data to inventory data"""
     try:
         if len(sys.argv) == 1:
             raise InventoryError("Please Input inventory")

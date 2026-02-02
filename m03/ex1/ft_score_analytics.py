@@ -1,7 +1,8 @@
 import sys
 
 
-def main():
+def main() -> None:
+    """This function takes input and process the player's data"""
     nsc = "No scores provided. Usage: python3"
     print("=== Player Score Analytics ===")
     pcount = len(sys.argv) - 1

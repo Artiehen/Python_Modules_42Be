@@ -1,4 +1,5 @@
-def validate_player(name: str, achievements: set):
+def validate_player(name: str, achievements: set) -> None:
+    """This function check for errors in the set"""
     if not isinstance(achievements, set):
         raise TypeError(f"{name} achievements must be a set")
 
@@ -6,7 +7,8 @@ def validate_player(name: str, achievements: set):
         raise ValueError(f"{name} achievements must contain only strings")
 
 
-def main():
+def main() -> None:
+    """This function takes processes the achievements of each player"""
     print("=== Achievement Tracker System ===\n")
 
     alice = {'first_kill', 'level_10', 'treasure_hunter', 'speed_demon'}
