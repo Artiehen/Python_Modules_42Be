@@ -130,7 +130,7 @@ def main() -> None:
                 index = index + 1
 
             inventory_analytics(inventoria, categories)
-    except (ValueError):
+    except (ValueError, IndexError):
         print("Missing Values, please check input")
     except InventoryError as e:
         print(e)
