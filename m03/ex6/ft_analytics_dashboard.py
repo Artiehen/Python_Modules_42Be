@@ -70,32 +70,38 @@ def set_comprehension(players: dict) -> None:
 
 
 def main() -> None:
-    players = [
-        {"name": "alice", "score": 2300, "active": "yes",
-         "achievement": ['first_kill', 'level_10', 'treasure_hunter',
-                         'speed_demon'],
-            "score category": 3, "region": "north"},
-        {"name": "bob", "score": 1800, "active": "yes",
-         "achievement": ['first_kill', 'level_10', 'boss_slayer', 'collector'],
-         "score category": 2, "region": "south"},
-        {"name": "charlie", "score": 2150, "active": "yes",
-         "achievement": ['level_10', 'treasure_hunter', 'boss_slayer',
-                         'speed_demon', 'perfectionist'], "score category": 5,
-            "region": "east"},
-        {"name": "diana", "score": 2050, "active": "no",
-         "achievement": ['level_10', 'treasure_hunter', 'collector',
-                         'speed_demon'],
-            "score category": 1, "region": "east"}
-        ]
-    print("=== Game Analytics Dashboard ===\n")
-    print("=== List comprehension examples ===")
-    list_comprehension(players)
-    print("\n=== Dictionary comprehension examples ===")
-    dict_comprehension(players)
-    print("\n=== Set Comprehension Examples ===")
-    set_comprehension(players)
-    print("\n=== Combined Analisis ===")
-    combine_analysis(players)
+    try:
+        players = [
+            {"name": "alice", "score": 2300, "active": "yes",
+             "achievement": ['first_kill', 'level_10', 'treasure_hunter',
+                             'speed_demon'],
+                "score category": 3, "region": "north"},
+            {"name": "bob", "score": 1800, "active": "yes",
+                "achievement": ['first_kill', 'level_10',
+                                'boss_slayer', 'collector'],
+                "score category": 2, "region": "south"},
+            {"name": "charlie", "score": 2150, "active": "yes",
+                "achievement": ['level_10', 'treasure_hunter', 'boss_slayer',
+                                'speed_demon', 'perfectionist'],
+                "score category": 5,
+                "region": "east"},
+            {"name": "diana", "score": 2050, "active": "no",
+                "achievement": ['level_10', 'treasure_hunter', 'collector',
+                                'speed_demon'],
+                "score category": 1, "region": "West"}
+                ]
+
+        print("=== Game Analytics Dashboard ===\n")
+        print("=== List comprehension examples ===")
+        list_comprehension(players)
+        print("\n=== Dictionary comprehension examples ===")
+        dict_comprehension(players)
+        print("\n=== Set Comprehension Examples ===")
+        set_comprehension(players)
+        print("\n=== Combined Analisis ===")
+        combine_analysis(players)
+    except (NameError, KeyError, TypeError, ValueError) as e:
+        print("Error with your data:", e)
 
 
 if __name__ == "__main__":
