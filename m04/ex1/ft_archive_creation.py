@@ -1,6 +1,4 @@
 def main() -> None:
-    """This is the main function, it opens/creates,
-      writes information to the file and closes the file"""
     try:
         f = open("new_discovery.txt", "w")
         nl0 = "[ENTRY 001] New quantum algorithm discovered"

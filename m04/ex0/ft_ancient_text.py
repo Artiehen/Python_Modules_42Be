@@ -1,7 +1,5 @@
 
 def main() -> None:
-    """This is the main function, it opens,
-      prints file information and closes the file"""
     try:
         f = open("ancient_fragment.txt", "r")
         print("=== CYBER ARCHIVES - DATA RECOVERY SYSTEM ===\n")
