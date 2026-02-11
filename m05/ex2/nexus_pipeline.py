@@ -3,18 +3,10 @@ from typing import Any, List, Dict, Union, Protocol
 import time
 
 
-# ==========================
-# Processing Stage Protocol
-# ==========================
-
 class ProcessingStage(Protocol):
     def process(self, data: Any) -> Any:
         ...
 
-
-# ==========================
-# Concrete Processing Stages
-# ==========================
 
 class InputStage:
     def process(self, data: Any) -> Any:
@@ -40,10 +32,6 @@ class OutputStage:
         print("OutputStage: Finalizing output...")
         return data
 
-
-# ==========================
-# Abstract Pipeline Base
-# ==========================
 
 class ProcessingPipeline(ABC):
 
@@ -91,19 +79,9 @@ class ProcessingPipeline(ABC):
         }
 
 
-# ==========================
-# Manual JSON Adapter
-# ==========================
-
 class JSONAdapter(ProcessingPipeline):
 
     def simple_json_parse(self, data: str) -> Dict[str, Any]:
-        """
-        VERY simplified JSON parser:
-        Only works for flat JSON objects like:
-        {"key": "value", "num": "123"}
-        """
-
         data = data.strip().strip("{}")
         pairs = data.split(",")
 
@@ -144,10 +122,6 @@ class JSONAdapter(ProcessingPipeline):
             return None
 
 
-# ==========================
-# Manual CSV Adapter
-# ==========================
-
 class CSVAdapter(ProcessingPipeline):
 
     def process(self, data: Any) -> str:
@@ -155,20 +129,12 @@ class CSVAdapter(ProcessingPipeline):
         return self.execute_stages(data)
 
 
-# ==========================
-# Stream Adapter
-# ==========================
-
 class StreamAdapter(ProcessingPipeline):
 
     def process(self, data: Any) -> Union[str, Any]:
         print(f"[{self.pipeline_id}] StreamAdapter processing... {data}")
         return self.execute_stages(data)
 
-
-# ==========================
-# Nexus Manager
-# ==========================
 
 class NexusManager:
 
@@ -201,10 +167,6 @@ class NexusManager:
                 f" {stats['execution_time']} S"
             )
 
-
-# ==========================
-# Demonstration
-# ==========================
 
 def main() -> None:
 
@@ -241,5 +203,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
-
