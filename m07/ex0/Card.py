@@ -6,7 +6,6 @@ class Card(ABC):
         self.name = name
         self.cost = cost
         self.rarity = rarity
-        self.type = 'Creature'
         return None
 
     @abstractmethod
