@@ -1,0 +1,28 @@
+
+Create a data analysis program called loading.py that:
+• Uses pandas for data manipulation
+• Uses numpy for numerical computations
+• Uses matplotlib for visualization
+• Demonstrates the difference between pip and Poetry dependency management
+• Includes proper dependency files for both approaches
+Your program should analyze "Matrix data" (you can simulate this with sample data)
+and generate a simple visualization.
+
+Create both requirements.txt (for pip) and pyproject.toml (for Poetry)
+• Your program must handle missing dependencies gracefully
+• Include a comparison function that shows installed package versions
+• Show the differences between pip and Poetry through your program’s output
+
+Expected Behavior
+
+$> python loading.py
+LOADING STATUS: Loading programs...
+Checking dependencies:
+[OK] pandas (2.1.0) - Data manipulation ready
+[OK] requests (2.31.0) - Network access ready
+[OK] matplotlib (3.7.2) - Visualization ready
+Analyzing Matrix data...
+Processing 1000 data points...
+Generating visualization...
+Analysis complete!
+Results saved to: matrix\_analysis.png}
