@@ -1,1 +1,17 @@
+[tool.poetry]
+name = "loading"
+version = "0.1.0"
+packages = []
 
+[tool.poetry.dependencies]
+python = ">=3.11,<3.13"
+pandas = "2.1.0"
+numpy = "1.26.0"
+matplotlib = "3.7.2"
+requests = "2.31.0"
+
+[tool.poetry.group.dev.dependencies]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
