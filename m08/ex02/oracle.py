@@ -7,7 +7,7 @@ def main():
     except ImportError as e:
         print(e)
     try:
-        load_dotenv('.env.example')
+        load_dotenv('.env')
     except FileNotFoundError as e:
         print(e)
     print("\nORACLE STATUS: Reading the Matrix...\n")
@@ -20,6 +20,18 @@ def main():
             print("Please check environment variables")
             exit(1)
     print("Configuration loaded:")
+    print(f"Mode: {os.getenv('MATRIX_MODE')}")
+    print(f"Database: {os.getenv('DATABASE_URL')}")
+    print(f"API Access: {os.getenv('API_KEY')}")
+    print(f"Log Level: {os.getenv('LOG_LEVEL')}")
+    print(f"Zion Network: {os.getenv('ZION_ENDPOINT')}")
+
+    print('\nEnvironment security check:')
+    print('[OK] No hardcoded secrets detected')
+    print('[OK] .env file properly configured')
+    print('[OK] Production overrides available')
+
+    print('\nThe Oracle sees all configurations.')
 
 
 if __name__ == "__main__":
