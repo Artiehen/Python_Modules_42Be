@@ -23,7 +23,7 @@ class AlienContact(BaseModel):
     message_received: Optional[str] = Field(default=None, max_length=500)
 
     @model_validator(mode="after")
-    def val_bus_rules(self):
+    def val_bus_rules(self) -> str:
         ct1 = "Telepathic contact must have at least 3 witnesses"
         ct4 = "Strong signals (> 7.0) should include received messages"
         if not self.contact_id.startswith("AC"):
@@ -40,7 +40,7 @@ class AlienContact(BaseModel):
         return self
 
 
-def main():
+def main() -> None:
     try:
         print("Alien Contact Log Validation")
         print("=" * 50)
