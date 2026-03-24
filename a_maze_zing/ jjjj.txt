@@ -1,0 +1,9 @@
+# this is comment line
+WIDTH=6
+HEIGHT=5
+ENTRY=2,4
+EXIT=0,4
+# this is comment line
+OUTPUT_FILE=file.txt
+PERFECT=True
+SEED=42
